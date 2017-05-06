@@ -3,9 +3,9 @@
 [![npm](https://img.shields.io/npm/v/@jschr/lambda-response.svg)](https://www.npmjs.com/package/@jschr/lambda-response)
 [![Build Status](https://img.shields.io/travis/jschr/lambda-response/master.svg)](https://travis-ci.org/jschr/lambda-response)
 
-Express-style api for sending responses from Lambda Integration Proxy / API Gateway.
+Express-style API for sending responses from Lambda Integration Proxy / API Gateway.
 
-Includes a cli and express middleware for local development.
+Includes a cli tool and express middleware for local development.
 
 ## Install
 
@@ -57,7 +57,7 @@ Check out the [tests](src/Response.spec.ts) for more examples.
 
 ## CLI
 
-A CLI tool is provided for convienent local development. If you've installed in globally:
+You can use the CLI for local development. If you've installed `@jschr/lambda-response` globally:
 
 ```bash
 $ lambda-response foo/bar.default --port 8080
