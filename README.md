@@ -28,7 +28,7 @@ export default function handler(event, context) {
   // => { statusCode: 200, body: '{"foo":"bar"}' }
 
   context.succeed(res.redirect('https://github.com'))
-  // => { location: 'https://github.com'} }
+  // => { statusCode: 302, headers: { Location: 'https://github.com'} } }
 }
 ```
 
