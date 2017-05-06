@@ -86,20 +86,17 @@ export class Response {
 
   /** sets the location of the response */
   public redirect(location: string): Response {
-    this.location = location
+    this.statusCode = 302
+    this.headers.Location = location
     return this
   }
 
   /** serialize */
   public toJSON(): ResponseJson {
-    if (this.location) {
-      return { location: this.location }
-    } else {
-      return {
-        statusCode: this.statusCode,
-        headers: this.headers,
-        body: this.body
-      }
+    return {
+      statusCode: this.statusCode,
+      headers: this.headers,
+      body: this.body
     }
   }
 }

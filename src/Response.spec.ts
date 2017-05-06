@@ -94,14 +94,15 @@ describe('Response.json', () => {
 })
 
 describe('Response.redirect', () => {
-  it('should set location and return instance', () => {
+  it('should set location, statusCode and return instance', () => {
     const location = 'http://localhost'
     const res = new Response()
     const instance = res.redirect(location)
     const json = res.toJSON()
 
     expect(instance).toEqual(res)
-    expect(json.location).toEqual(location)
+    expect(json.statusCode).toEqual(302)
+    expect(json.headers.Location).toEqual(location)
   })
 })
 
@@ -124,16 +125,5 @@ describe('Response.toJSON', () => {
       'Access-Control-Allow-Methods': cors.methods.join(','),
       'Access-Control-Allow-Headers': cors.headers.join(',')
     })
-  })
-
-  it('should return only location if set', () => {
-    const location = 'http://localhost'
-    const res = new Response()
-    const instance = res.redirect(location)
-    const json = res.toJSON()
-
-    expect(instance).toEqual(res)
-    expect(json.location).toEqual(location)
-    expect(Object.keys(json).length).toEqual(1)
   })
 })
