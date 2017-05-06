@@ -1,9 +1,5 @@
 node_modules/
 lib/
-.env
-*.log
 
-.terraform/
-*.tfstate
-*.tfstate.*
-*.tfvars
+.DS_STORE
+*.log
