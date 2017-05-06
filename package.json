@@ -1,7 +1,7 @@
 {
   "name": "@jschr/lambda-response",
-  "version": "0.1.1",
-  "description": "Create lambda / api gateway responses with express-like api plus middleware for local development.",
+  "version": "0.1.2",
+  "description": "Create lambda / api gateway responses with express-like api plus a cli for local development.",
   "main": "lib/index.js",
   "bin": {
     "lambda-response": "./lib/cli.js"
