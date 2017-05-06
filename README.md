@@ -72,7 +72,7 @@ For advanced use cases you can use the `lambda-response` express middleware:
 import * as express from 'express'
 import { middleware } from '@jschr/lambda-response'
 
-import handler from 'foo/bar'
+import handler from './foo/bar'
 
 const app = express()
 
