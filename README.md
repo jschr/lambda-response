@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@jschr/lambda-response.svg)](https://www.npmjs.com/package/@jschr/lambda-response)
 [![Build Status](https://img.shields.io/travis/jschr/lambda-response/master.svg)](https://travis-ci.org/jschr/lambda-response)
 
-Express-style API for sending responses from Lambda Integration Proxy to API Gateway.
+Express-style API for sending responses from [Lambda Integration Proxy](http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html) to API Gateway.
 
 Includes a CLI tool and express middleware for local development.
 
