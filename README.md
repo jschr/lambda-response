@@ -1,5 +1,8 @@
 # lambda-response
 
+[![npm](https://img.shields.io/npm/v/@jschr/lambda-response.svg)](https://www.npmjs.com/package/@jschr/lambda-response)
+[![Build Status](https://img.shields.io/travis/jschr/lambda-response/master.svg)](https://travis-ci.org/jschr/lambda-response)
+
 Express-style api for sending responses for Lambda Integration Proxy / API Gateway.
 
 Includes a cli and express middleware for local development.
