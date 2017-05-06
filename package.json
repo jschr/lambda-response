@@ -1,0 +1,42 @@
+{
+  "name": "@jschr/lambda-response",
+  "version": "0.1.0",
+  "description": "Create lambda / api gateway responses with express-like api plus middleware for local development.",
+  "main": "lib/index.js",
+  "bin": {
+    "lambda-response": "./lib/cli.js"
+  },
+  "scripts": {
+    "clean": "rimraf ./build",
+    "build": "tsc",
+    "lint": "tslint src/",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "prepublish": "npm run clean && npm run build && npm run lint && npm run test"
+  },
+  "dependencies": {
+    "detect-port": "^1.1.1",
+    "express": "^4.15.2",
+    "minimist": "^1.2.0",
+    "prompt": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/aws-sdk": "^0.0.42",
+    "@types/detect-port": "^1.1.0",
+    "@types/expect": "^1.20.1",
+    "@types/express": "^4.0.35",
+    "@types/minimist": "^1.2.0",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^7.0.12",
+    "expect": "^1.20.2",
+    "mocha": "^3.3.0",
+    "rimraf": "^2.6.1",
+    "ts-node": "^3.0.2",
+    "tslint": "^5.0.0",
+    "typescript": "^2.3.2"
+  },
+  "repository": {
+    "url": "https://github.com/jschr/lambda-response"
+  },
+  "author": "Jordan Schroter <jordan.schroter@gmail.com>",
+  "license": "MIT"
+}
