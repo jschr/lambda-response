@@ -22,9 +22,13 @@ export default function handler(event, context) {
   const res = new Response()
 
   context.succeed(res.status(200).send('OK'))
-  context.succeed(res.status(200).send('OK'))
+  // => { statusCode: 200, body: 'OK' }
+
   context.succeed(res.status(200).json({ foo: bar }))
-  context.succeed(res.redirect('http://google.com'))
+  // => { statusCode: 200, body: '{"foo":"bar"}' }
+
+  context.succeed(res.redirect('https://github.com'))
+  // => { location: 'https://github.com'} }
 }
 ```
 
@@ -33,7 +37,7 @@ export default function handler(event, context) {
 Default headers can be passed when creating a new response:
 ```js
 
-const headers = { 'Content-Type': 'application/javascript' }
+const headers = { 'Content-Type': 'application/json' }
 const res = new Response({ headers })
 ```
 
@@ -41,7 +45,7 @@ Or on an instance:
 ```js
 
 const res = new Response()
-const headers = { 'Content-Type': 'application/javascript' }
+const headers = { 'Content-Type': 'application/json' }
 res.set(headers)
 ```
 
