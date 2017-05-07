@@ -1,7 +1,7 @@
 {
   "name": "@jschr/lambda-response",
   "version": "0.1.7",
-  "description": "Express-style API for sending responses from Lambda Integration Proxy to API Gateway and a CLI for local development.",
+  "description": "Express-like API for sending responses from Lambda Integration Proxy to API Gateway and a CLI for local development.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "bin": {
