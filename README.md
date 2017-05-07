@@ -41,7 +41,7 @@ Even more express-like with async/await:
 const { Response } = require('@jschr/lambda-response')
 
 async function route(req, res) {
-  const data = await someAsyncFunction()
+  const data = await someAsyncFunction(req.query.id)
 
   if (data) {
     res.json(data)
