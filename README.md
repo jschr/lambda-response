@@ -16,7 +16,7 @@ npm install @jschr/lambda-response
 ## Usage
 
 ```js
-import { Response } from '@jschr/lambda-response'
+const { Response } = require('@jschr/lambda-response')
 
 export default function handler(event, context) {
   const res = new Response()
@@ -32,6 +32,31 @@ export default function handler(event, context) {
 
   context.succeed(res.redirect('https://github.com'))
   // => { statusCode: 302, headers: { Location: 'https://github.com'} } }
+}
+```
+
+Even more express-like with async/await:
+
+```js
+const { Response } = require('@jschr/lambda-response')
+
+async function route(req, res) {
+  const data = await someAsyncFunction()
+
+  if (data) {
+    res.json(data)
+  } else {
+    res.status(404).json({ message: 'Not found'. })
+  }
+}
+
+export default function handler(event, context) {
+  const req = { query: event.queryStringParameters || {} }
+  const res = new Response()
+
+  route(req, res)
+    .then(() => context.succeed(res))
+    .catch(context.fail)
 }
 ```
 
