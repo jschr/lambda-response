@@ -21,11 +21,14 @@ import { Response } from '@jschr/lambda-response'
 export default function handler(event, context) {
   const res = new Response()
 
-  context.succeed(res.status(200).send('OK'))
+  context.succeed(res.send('OK'))
   // => { statusCode: 200, body: 'OK' }
 
-  context.succeed(res.status(200).json({ foo: bar }))
+  context.succeed(res.json({ foo: bar }))
   // => { statusCode: 200, body: '{"foo":"bar"}' }
+
+  context.succeed(res.status(404).json({ message: 'Not found.' }))
+  // => { statusCode: 404, body: '{"message":"Not found."}' }
 
   context.succeed(res.redirect('https://github.com'))
   // => { statusCode: 302, headers: { Location: 'https://github.com'} } }

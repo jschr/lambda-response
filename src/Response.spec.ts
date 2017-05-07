@@ -77,7 +77,17 @@ describe('Response.send', () => {
     const json = res.toJSON()
 
     expect(instance).toEqual(res)
+    expect(json.statusCode).toEqual(200)
     expect(json.body).toEqual(body)
+  })
+
+  it('should not override statusCode', () => {
+    const body = 'OK'
+    const res = new Response()
+    const instance = res.status(404).send(body)
+    const json = res.toJSON()
+
+    expect(json.statusCode).toEqual(404)
   })
 })
 
@@ -89,7 +99,17 @@ describe('Response.json', () => {
     const json = res.toJSON()
 
     expect(instance).toEqual(res)
+    expect(json.statusCode).toEqual(200)
     expect(json.body).toEqual(JSON.stringify(body))
+  })
+
+  it('should not override statusCode', () => {
+    const body = { foo: 'bar' }
+    const res = new Response()
+    const instance = res.status(404).json(body)
+    const json = res.toJSON()
+
+    expect(json.statusCode).toEqual(404)
   })
 })
 

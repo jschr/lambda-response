@@ -74,12 +74,14 @@ export class Response {
 
   /** sets the body of the response */
   public send(body: any): Response {
+    this.statusCode = this.statusCode || 200
     this.body = body
     return this
   }
 
   /** sets the body of the response with JSON.stringify */
   public json(body: any): Response {
+    this.statusCode = this.statusCode || 200
     this.body = JSON.stringify(body)
     return this
   }
