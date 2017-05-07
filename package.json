@@ -1,6 +1,6 @@
 {
   "name": "@jschr/lambda-response",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Express-like API for sending responses from Lambda Integration Proxy to API Gateway and a CLI for local development.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -15,7 +15,10 @@
     "prepublish": "npm run clean && npm run build && npm run lint && npm run test"
   },
   "dependencies": {
-    "express": "^4.15.2"
+    "detect-port": "^1.1.1",
+    "express": "^4.15.2",
+    "minimist": "^1.2.0",
+    "prompt": "^1.0.0"
   },
   "devDependencies": {
     "@types/aws-sdk": "^0.0.42",
@@ -25,11 +28,8 @@
     "@types/minimist": "^1.2.0",
     "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.12",
-    "detect-port": "^1.1.1",
     "expect": "^1.20.2",
-    "minimist": "^1.2.0",
     "mocha": "^3.3.0",
-    "prompt": "^1.0.0",
     "rimraf": "^2.6.1",
     "ts-node": "^3.0.2",
     "tslint": "^5.0.0",
