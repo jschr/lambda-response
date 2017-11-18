@@ -11,6 +11,7 @@ Includes a CLI tool and express middleware for local development.
 
 ```
 npm install @jschr/lambda-response
+yarn add @jschr/lambda-response
 ```
 
 ## Usage
@@ -34,9 +35,29 @@ export default function handler(event, context) {
   // => { statusCode: 302, headers: { Location: 'https://github.com'} } }
 }
 ```
+### Headers
 
+```js
+
+const headers = { 'Content-Type': 'application/json' }
+const res = new Response({ headers })
+
+const res = new Response()
+const headers = { 'Content-Type': 'application/json' }
+res.set(headers)
+```
+Default headers can be passed when creating a new response or set on an instance.
+
+### CORS
+
+```js
+const cors = { origin: 'example.com', methods: ['GET'], headers: ['X-Api-Key'] }
+const res = new Response({ cors })
+```
+CORS is enabled by default. Customize cors settings when creating a new response.
+
+### Examples
 With async/await
-
 ```js
 const { Response } = require('@jschr/lambda-response')
 
@@ -62,34 +83,11 @@ export default function async handler(event, context) {
   }
 }
 ```
-
-### Headers
-
-```js
-
-const headers = { 'Content-Type': 'application/json' }
-const res = new Response({ headers })
-
-const res = new Response()
-const headers = { 'Content-Type': 'application/json' }
-res.set(headers)
-```
-Default headers can be passed when creating a new response or set on an instance.
-
-### CORS
-
-```js
-const cors = { origin: 'example.com', methods: ['GET'], headers: ['X-Api-Key'] }
-const res = new Response({ cors })
-```
-CORS is enabled by default. Customize cors settings when creating a new response.
-
-### Examples
 Check out the [tests](src/Response.spec.ts) for more examples.
 
 ## CLI
 
-You can use the CLI for local development if you've installed `@jschr/lambda-response` globally.
+You can use the CLI for local development if you've installed the package globally.
 
 ```bash
 $ lambda-response foo/bar.default --port 8080
@@ -103,4 +101,4 @@ const { middleware } = require('@jschr/lambda-response')
 
 server.use(middleware(require('./foo/bar')))
 ```
-Use the `lambda-response` express middleware for custom servers.
+Use the express middleware for custom servers.
