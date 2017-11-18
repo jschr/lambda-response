@@ -35,7 +35,7 @@ export default function handler(event, context) {
 }
 ```
 
-Even more express-like with async/await:
+With async/await
 
 ```js
 const { Response } = require('@jschr/lambda-response')
@@ -50,65 +50,57 @@ async function route(req, res) {
   }
 }
 
-export default function handler(event, context) {
+export default function async handler(event, context) {
   const req = { query: event.queryStringParameters || {} }
   const res = new Response()
 
-  route(req, res)
-    .then(() => context.succeed(res))
-    .catch(context.fail)
+  try {
+    await route(req, res);
+    context.succeed(res);
+  } catch (err) {
+    context.fail(err);
+  }
 }
 ```
 
 ### Headers
 
-Default headers can be passed when creating a new response:
 ```js
 
 const headers = { 'Content-Type': 'application/json' }
 const res = new Response({ headers })
-```
-
-Or on an instance:
-```js
 
 const res = new Response()
 const headers = { 'Content-Type': 'application/json' }
 res.set(headers)
 ```
+Default headers can be passed when creating a new response or set on an instance.
 
 ### CORS
 
-CORS is enabled by default. You can pass in cors options when creating a new response:
 ```js
 const cors = { origin: 'example.com', methods: ['GET'], headers: ['X-Api-Key'] }
 const res = new Response({ cors })
 ```
+CORS is enabled by default. Customize cors settings when creating a new response.
 
+### Examples
 Check out the [tests](src/Response.spec.ts) for more examples.
 
 ## CLI
 
-You can use the CLI for local development. If you've installed `@jschr/lambda-response` globally:
+You can use the CLI for local development if you've installed `@jschr/lambda-response` globally.
 
 ```bash
 $ lambda-response foo/bar.default --port 8080
 ```
-
-Where `foo/bar` is the path to your lambda handler and `default` is the exported function.
+Where `foo/bar` is the path to your lambda handler and `default` is the exported function name.
 
 ## Middleware
-For advanced use cases you can use the `lambda-response` express middleware:
-
 ```js
-import * as express from 'express'
-import { middleware } from '@jschr/lambda-response'
+const server = require('express')()
+const { middleware } = require('@jschr/lambda-response')
 
-import handler from './foo/bar'
-
-const app = express()
-
-app.use(middleware(handler))
-
-app.listen(8080)
+server.use(middleware(require('./foo/bar')))
 ```
+Use the `lambda-response` express middleware for custom servers.
