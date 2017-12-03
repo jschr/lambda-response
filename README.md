@@ -71,7 +71,7 @@ async function route(req, res) {
   }
 }
 
-export default function async handler(event, context) {
+export default async function handler(event, context) {
   const req = { query: event.queryStringParameters || {} }
   const res = new Response()
 
